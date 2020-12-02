@@ -24,3 +24,11 @@ def test_raises_exception_on_wrong_file():
     with pytest.raises(CensusAnalyserError):
         csv_loader = CSVLoader(CENSUS_CSV_WRONG_FILE_PATH)
         csv_loader.record_counter()
+
+# check if file type is right or not
+
+
+def test_raises_exception_on_wrong_file_type():
+    with pytest.raises(CensusAnalyserError):
+        csv_loader = CSVLoader(CENSUS_CSV_WRONG_FILE_TYPE)
+        csv_loader.record_counter()
