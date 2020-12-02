@@ -40,3 +40,11 @@ def test_raises_exception_on_wrong_delimiter():
     with pytest.raises(CensusAnalyserError):
         csv_loader = CSVLoader(CENSUS_CSV_WRONG_DELIMITER)
         csv_loader.record_counter()
+
+# check if file header is right or not
+
+
+def test_raises_exception_on_wrong_header():
+    with pytest.raises(CensusAnalyserError):
+        csv_loader = CSVLoader(CENSUS_CSV_FILE_PATH)
+        csv_loader.record_counter()
