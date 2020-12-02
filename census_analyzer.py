@@ -10,7 +10,7 @@ class CSVLoader:
 
     def record_counter(self):
         """
-        counts record in csv file
+        counts record in indiacensus csv file
         :return: return number of records
         """
         try:
@@ -24,6 +24,9 @@ class CSVLoader:
             raise CensusAnalyserError("Header is wrong")
 
 
-# if __name__=="__main__":
-#     csv_loader = CSVLoader(path="/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.csv")
-#     print(csv_loader.record_counter())
+
+if __name__ == "__main__":
+    csv_loader = CSVLoader(path="/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.csv")
+    csv_loader_state = CSVLoader(path="/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCode.csv")
+    print(csv_loader.record_counter())
+    print("state - "+str(csv_loader_state.record_counter()))

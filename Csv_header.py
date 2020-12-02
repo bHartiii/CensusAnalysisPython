@@ -1,6 +1,6 @@
 class IndiaCensusCSV:
     def __init__(self):
-        self.state = "tate"
+        self.state = "State"
         self.population = "Population"
         self.area = "AreaInSqKm"
         self.density = "DensityPerSqKm"
