@@ -17,3 +17,10 @@ def test_record_counter():
     csv_loader = CSVLoader(CENSUS_CSV_FILE_PATH)
     assert csv_loader.record_counter() == 29
 
+# check if file path is correct or not
+
+
+def test_raises_exception_on_wrong_file():
+    with pytest.raises(CensusAnalyserError):
+        csv_loader = CSVLoader(CENSUS_CSV_WRONG_FILE_PATH)
+        csv_loader.record_counter()
