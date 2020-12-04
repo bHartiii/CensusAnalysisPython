@@ -1,7 +1,7 @@
 import pytest
 
 from com.bridgelabz.census.census_analyzer_error import CensusAnalyserError
-from com.bridgelabz.census.CSVLoader import CSVFileLoader
+from com.bridgelabz.census.CSVReader import CSVFileLoader, CSVFileReader
 from com.bridgelabz.census.Csv_header import IndiaCensusCSV
 from com.bridgelabz.census.state_csv_header import StateCSVHeader
 
@@ -20,14 +20,16 @@ CENSUS_CSV_WRONG_STATE_CSV_DELIMITER = "/Users/LENOVO/PycharmProjects/census_ana
 
 def test_record_counter():
     csv = CSVFileLoader(IndiaCensusCSV(), CENSUS_CSV_FILE_PATH)
-    assert csv.record_counter_in_csv() == 29
+    csv_file = CSVFileReader(csv)
+    assert csv_file.record_counter_in_csv() == 29
 
 # check if length of record in state csv file is same or not
 
 
 def test_record_counter_in_state_csv():
     csv = CSVFileLoader(StateCSVHeader(), CENSUS_STATE_CSV_FILE_PATH)
-    assert csv.record_counter_in_csv() == 37
+    csv_file = CSVFileReader(csv)
+    assert csv_file.record_counter_in_csv() == 37
 
 # check if file path is correct or not
 
@@ -35,7 +37,8 @@ def test_record_counter_in_state_csv():
 def test_raises_exception_on_wrong_file():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(IndiaCensusCSV(), CENSUS_CSV_WRONG_FILE_PATH)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if state csv file is right or not
 
@@ -43,7 +46,8 @@ def test_raises_exception_on_wrong_file():
 def test_raises_exception_on_wrong_state_file():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(StateCSVHeader(), CENSUS_CSV_WRONG_FILE_PATH)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if file type is right or not
 
@@ -51,7 +55,8 @@ def test_raises_exception_on_wrong_state_file():
 def test_raises_exception_on_wrong_file_type():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(IndiaCensusCSV(), CENSUS_CSV_WRONG_FILE_TYPE)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if state csv file type is right or not
 
@@ -59,7 +64,8 @@ def test_raises_exception_on_wrong_file_type():
 def test_raises_exception_on_wrong_state_file_type():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(StateCSVHeader(), CENSUS_CSV_WRONG_FILE_TYPE)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if delimiter is right or not
 
@@ -67,7 +73,8 @@ def test_raises_exception_on_wrong_state_file_type():
 def test_raises_exception_on_wrong_delimiter():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(IndiaCensusCSV(), CENSUS_CSV_WRONG_DELIMITER)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if delimiter in state csv is right or not
 
@@ -75,7 +82,8 @@ def test_raises_exception_on_wrong_delimiter():
 def test_raises_exception_on_wrong_delimiter_in_state_csv():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(StateCSVHeader(), CENSUS_CSV_WRONG_STATE_CSV_DELIMITER)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if file header is right or not
 
@@ -83,7 +91,8 @@ def test_raises_exception_on_wrong_delimiter_in_state_csv():
 def test_raises_exception_on_wrong_header():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(IndiaCensusCSV(), CENSUS_STATE_CSV_FILE_PATH)
-        csv.record_counter_in_csv()
+        csv.load_csv()
+
 
 # check if state csv file header is right or not
 
@@ -91,4 +100,4 @@ def test_raises_exception_on_wrong_header():
 def test_raises_exception_on_state_csv_wrong_header():
     with pytest.raises(CensusAnalyserError):
         csv = CSVFileLoader(StateCSVHeader(), CENSUS_CSV_FILE_PATH)
-        csv.record_counter_in_csv()
+        csv.load_csv()
