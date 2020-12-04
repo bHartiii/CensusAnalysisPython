@@ -1,6 +1,6 @@
 import pandas as pd
 
-from com.bridgelabz.census.census_analyzer_error import CensusAnalyserError
+from com.bridgelabz.census.Census_analyzer_exception import CensusAnalyserError
 
 
 class CSVFileLoader:
@@ -13,7 +13,7 @@ class CSVFileLoader:
 
     def load_csv(self):
         """
-        loads the csv file and read data
+        loads the csv file and reads data
         :return: data
         """
         try:

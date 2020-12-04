@@ -1,1 +1,0 @@
-print("Welcome to census analysis program")

@@ -6,4 +6,7 @@ class IndiaCensusCSV:
         self.density = "DensityPerSqKm"
 
     def __repr__(self):
+        """
+        :return: header of IndiaCensusCsv file
+        """
         return self.state + "," + self.population + "," + self.area + "," + self.density

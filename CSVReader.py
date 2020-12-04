@@ -1,9 +1,9 @@
-from com.bridgelabz.census.Csv_header import IndiaCensusCSV
-from com.bridgelabz.census.state_csv_header import StateCSVHeader
+from com.bridgelabz.census.CSV_header import IndiaCensusCSV
+from com.bridgelabz.census.StateCSVHeader import StateCSVHeader
 from com.bridgelabz.census.CSVFileLoader import CSVFileLoader
 
 
-class CSVFileReader(object):
+class CSVFileReader:
 
     def __init__(self, obj):
         self.main = obj
@@ -16,13 +16,4 @@ class CSVFileReader(object):
         return len(self.main.load_csv())
 
 
-if __name__ == "__main__":
-    census_csv = CSVFileLoader(IndiaCensusCSV(),
-                               "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.csv")
-    state_csv = CSVFileLoader(StateCSVHeader(),
-                              "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCode.csv")
 
-    census_csv_file = CSVFileReader(census_csv)
-    state_csv_file = CSVFileReader(state_csv)
-    print(census_csv_file.record_counter_in_csv())
-    print(state_csv_file.record_counter_in_csv())
