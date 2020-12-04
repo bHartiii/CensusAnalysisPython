@@ -30,5 +30,3 @@ class CSVFileReader:
             data_list = list(x)
             data_dict[data_list[0]] = data_list
         return json.dumps(data_dict)
-
-

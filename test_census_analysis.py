@@ -20,8 +20,15 @@ STATE_CODE_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/
 @pytest.fixture
 def census_csv_file():
     csv_file = CSVFileLoader(IndiaCensusCSV(), CENSUS_CSV_FILE_PATH)
-    csv = CSVFileReader(csv_file)
-    return csv
+    census_csv_file = CSVFileReader(csv_file)
+    return census_csv_file
+
+
+@pytest.fixture
+def state_csv_file():
+    csv_file = CSVFileLoader(StateCSVHeader(), STATE_CODE_CSV_FILE_PATH)
+    state_csv_file = CSVFileReader(csv_file)
+    return state_csv_file
 
 # check if given path, file type, delimiter and header is correct or not
 
@@ -56,12 +63,22 @@ def test_givenCSVFile_WhenCounted_ShouldReturnRecordsCount(header, path, expecte
 # check if IndiaCensusData.csv file is sorted or not
 
 
-def test_givenCSVFile_WhenSorted_IfNot_ShouldRaiseCustomException(census_csv_file):
+def test_givenIndiaCensusCSVFile_WhenSorted_IfNot_ShouldRaiseCustomException(census_csv_file):
     data = json.loads(census_csv_file.sort_data_in_csv("State"))
     if list(data.keys())[0] != "Andhra Pradesh":
         raise CensusAnalyserError("File is not sorted!!!")
     if list(data.keys())[len(data)-1] != "West Bengal":
         raise CensusAnalyserError("File is not sorted!!!")
+
+# check if IndiaStateCode.csv file is sorted or not
+
+
+def test_givenStateCodeCSV_WhenSorted_IfNot_ShouldRaiseCustomException(state_csv_file):
+    data = json.loads(state_csv_file.sort_data_in_csv("StateCode"))
+    if list(data.get(list(data.keys())[0]))[3] != "AD":
+        raise CensusAnalyserError("File is not sorted")
+    if list(data.get(list(data.keys())[len(data) - 1]))[3] != "WB":
+        raise CensusAnalyserError("File is not sorted")
 
 
 
