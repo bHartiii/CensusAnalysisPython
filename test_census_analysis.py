@@ -65,9 +65,7 @@ def test_givenCSVFile_WhenCounted_ShouldReturnRecordsCount(header, path, expecte
 
 def test_givenIndiaCensusCSVFile_WhenSorted_IfNot_ShouldRaiseCustomException(census_csv_file):
     data = json.loads(census_csv_file.sort_data_in_csv("State"))
-    if list(data.keys())[0] != "Andhra Pradesh":
-        raise CensusAnalyserError("File is not sorted!!!")
-    if list(data.keys())[len(data)-1] != "West Bengal":
+    if list(data.keys())[0] != "Andhra Pradesh" and list(data.keys())[len(data)-1] != "West Bengal":
         raise CensusAnalyserError("File is not sorted!!!")
 
 # check if IndiaStateCode.csv file is sorted or not
@@ -75,20 +73,25 @@ def test_givenIndiaCensusCSVFile_WhenSorted_IfNot_ShouldRaiseCustomException(cen
 
 def test_givenStateCodeCSV_WhenSorted_IfNot_ShouldRaiseCustomException(state_csv_file):
     data = json.loads(state_csv_file.sort_data_in_csv("StateCode"))
-    if list(data.get(list(data.keys())[0]))[3] != "AD":
-        raise CensusAnalyserError("File is not sorted")
-    if list(data.get(list(data.keys())[len(data) - 1]))[3] != "WB":
+    if list(data.get(list(data.keys())[0]))[3] != "AD" and list(data.get(list(data.keys())[len(data) - 1]))[3] != "WB":
         raise CensusAnalyserError("File is not sorted")
 
-# check if IndiaStateCode.csv file is sorted or not accordind to population in from most to least
+
+# check if IndiaStateCode.csv file is sorted or not according to population from most to least
 
 
 def test_givenStateCodeCSV_WhenSortedAccordingToPopulation_IfNot_ShouldRaiseCustomException(census_csv_file):
     data = json.loads(census_csv_file.sort_data_in_csv("Population"))
-    if list(data.keys())[0] != "Uttar Pradesh":
-        raise CensusAnalyserError("File is not sorted")
-    if list(data.keys())[len(data) - 1] != "Sikkim":
+    if list(data.keys())[0] != "Uttar Pradesh" and list(data.keys())[len(data) - 1] != "Sikkim":
         raise CensusAnalyserError("File is not sorted")
 
+
+# check if IndiaStateCode.csv file is sorted or not according to population density from most to least
+
+
+def test_givenStateCodeCSV_WhenSortedAccordingToDensity_IfNot_ShouldRaiseCustomException(census_csv_file):
+    data = json.loads(census_csv_file.sort_data_in_csv("DensityPerSqKm"))
+    if list(data.keys())[0] != "Bihar" and list(data.keys())[len(data) - 1] != "Arunachal Pradesh":
+        raise CensusAnalyserError("File is not sorted")
 
 
