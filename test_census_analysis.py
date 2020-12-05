@@ -95,3 +95,10 @@ def test_givenStateCodeCSV_WhenSortedAccordingToDensity_IfNot_ShouldRaiseCustomE
         raise CensusAnalyserError("File is not sorted")
 
 
+# check if IndiaStateCode.csv file is sorted or not according to largest area to smallest
+
+
+def test_givenStateCodeCSV_WhenSortedAccordingToArea_IfNot_ShouldRaiseCustomException(census_csv_file):
+    data = json.loads(census_csv_file.sort_data_in_csv("AreaInSqKm"))
+    if list(data.keys())[0] != "Rajasthan" and list(data.keys())[len(data) - 1] != "Goa":
+        raise CensusAnalyserError("File is not sorted")

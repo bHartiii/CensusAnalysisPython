@@ -25,9 +25,10 @@ class CSVFileReader:
         :return:sorted data in json format
         """
         data_dict = {}
-        asc = True
-        if sorting_key == "Population" or sorting_key == "DensityPerSqKm":
+        if sorting_key == "Population" or sorting_key == "DensityPerSqKm" or sorting_key == "AreaInSqKm":
             asc = False
+        else:
+            asc = True
         data = self.main.load_csv().sort_values(sorting_key, ascending=asc)
         for x in data.values:
             data_list = list(x)
@@ -35,7 +36,3 @@ class CSVFileReader:
         return json.dumps(data_dict)
 
 
-if __name__ == "__main__":
-    census_csv = CSVFileLoader(IndiaCensusCSV(), "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.csv")
-    csv = CSVFileReader(census_csv)
-    print(csv.sort_data_in_csv("DensityPerSqKm"))
