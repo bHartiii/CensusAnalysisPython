@@ -19,8 +19,10 @@ class CSVFileLoader:
         try:
             self.col_names = repr(self.header).split(",")
             self.data = pd.read_csv(self.path, usecols=self.col_names)
+            if self.col_names != list(self.data.columns):
+                raise CensusAnalyserError("Header is wrong")
             return self.data
         except FileNotFoundError:
             raise CensusAnalyserError("Wrong path given")
         except ValueError:
-            raise CensusAnalyserError("Header is wrong or Delimiter is wrong")
+            raise CensusAnalyserError("Delimiter is wrong")

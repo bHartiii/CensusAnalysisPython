@@ -3,18 +3,19 @@ import json
 import pytest
 
 from com.bridgelabz.census_analyzer.census_analyzer_exception import CensusAnalyserError
-from com.bridgelabz.census_analyzer.csv_reader import CSVFileLoader, CSVFileReader
+from com.bridgelabz.census_analyzer.csv_reader import CSVFileLoader, CSVFileReader, CENSUS_CSV_FILE_PATH, STATE_CODE_CSV_FILE_PATH
 from com.bridgelabz.census_analyzer.census_csv_header import IndiaCensusCSV
 from com.bridgelabz.census_analyzer.state_csv_header import StateCSVHeader
 
-CENSUS_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusData.csv"
-STATE_CODE_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCode.csv"
+CENSUS_CSV_FILE_PATH = CENSUS_CSV_FILE_PATH
+STATE_CODE_CSV_FILE_PATH = STATE_CODE_CSV_FILE_PATH
 CSV_WRONG_FILE_PATH = "CSVFile/IndiaStateCensusData.csv"
-CSV_WRONG_FILE_TYPE = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusData.pdf"
-CENSUS_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusData_WrongHeader.csv"
-STATE_CODE_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCode_WrongHeader.csv"
-CENSUS_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusDataSpace.csv"
-STATE_CODE_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCodeSemicolon.csv"
+CSV_WRONG_FILE_TYPE = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCensusData.pdf"
+CENSUS_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCensusData_WrongHeader.csv"
+STATE_CODE_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCode_WrongHeader.csv"
+CENSUS_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCensusDataSpace.csv"
+STATE_CODE_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCodeSemicolon.csv"
+
 CENSUS_ANALYZER_CUSTOM_EXCEPTION = CensusAnalyserError("File is not sorted")
 
 

@@ -1,10 +1,23 @@
 import json
 
-from pandas.io.json import to_json
-
 from com.bridgelabz.census_analyzer.census_csv_header import IndiaCensusCSV
 from com.bridgelabz.census_analyzer.state_csv_header import StateCSVHeader
 from com.bridgelabz.census_analyzer.csv_file_loader import CSVFileLoader
+CENSUS_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCensusData.csv"
+STATE_CODE_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/data/IndiaStateCode.csv"
+
+
+def convert_list_into_json(data):
+    """
+    convert list dataframe into json format
+    :param data: list data frame
+    :return: json data
+    """
+    data_dict = {}
+    for x in data.values:
+        data_list = list(x)
+        data_dict[data_list[0]] = data_list
+    return json.dumps(data_dict)
 
 
 class CSVFileReader:
@@ -24,15 +37,11 @@ class CSVFileReader:
         sorts csv data according to sorting key
         :return:sorted data in json format
         """
-        data_dict = {}
         if sorting_key == "Population" or sorting_key == "DensityPerSqKm" or sorting_key == "AreaInSqKm":
             asc = False
         else:
             asc = True
         data = self.main.load_csv().sort_values(sorting_key, ascending=asc)
-        for x in data.values:
-            data_list = list(x)
-            data_dict[data_list[0]] = data_list
-        return json.dumps(data_dict)
-
+        sorted_data = convert_list_into_json(data)
+        return sorted_data
 
