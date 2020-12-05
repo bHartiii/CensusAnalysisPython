@@ -25,8 +25,17 @@ class CSVFileReader:
         :return:sorted data in json format
         """
         data_dict = {}
-        data = self.main.load_csv().sort_values(sorting_key)
+        asc = True
+        if sorting_key == "Population":
+            asc = False
+        data = self.main.load_csv().sort_values(sorting_key, ascending=asc)
         for x in data.values:
             data_list = list(x)
             data_dict[data_list[0]] = data_list
         return json.dumps(data_dict)
+
+
+if __name__ == "__main__":
+    census_csv = CSVFileLoader(IndiaCensusCSV(), "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.csv")
+    csv = CSVFileReader(census_csv)
+    print(csv.sort_data_in_csv("Population"))
