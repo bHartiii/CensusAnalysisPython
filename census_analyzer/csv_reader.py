@@ -2,9 +2,9 @@ import json
 
 from pandas.io.json import to_json
 
-from com.bridgelabz.census.CSV_header import IndiaCensusCSV
-from com.bridgelabz.census.StateCSVHeader import StateCSVHeader
-from com.bridgelabz.census.CSVFileLoader import CSVFileLoader
+from com.bridgelabz.census_analyzer.census_csv_header import IndiaCensusCSV
+from com.bridgelabz.census_analyzer.state_csv_header import StateCSVHeader
+from com.bridgelabz.census_analyzer.csv_file_loader import CSVFileLoader
 
 
 class CSVFileReader:

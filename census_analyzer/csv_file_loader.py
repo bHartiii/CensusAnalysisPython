@@ -1,6 +1,6 @@
 import pandas as pd
 
-from com.bridgelabz.census.Census_analyzer_exception import CensusAnalyserError
+from com.bridgelabz.census_analyzer.census_analyzer_exception import CensusAnalyserError
 
 
 class CSVFileLoader:

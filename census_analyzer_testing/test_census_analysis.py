@@ -2,19 +2,19 @@ import json
 
 import pytest
 
-from com.bridgelabz.census.Census_analyzer_exception import CensusAnalyserError
-from com.bridgelabz.census.CSVReader import CSVFileLoader, CSVFileReader
-from com.bridgelabz.census.CSV_header import IndiaCensusCSV
-from com.bridgelabz.census.StateCSVHeader import StateCSVHeader
+from com.bridgelabz.census_analyzer.census_analyzer_exception import CensusAnalyserError
+from com.bridgelabz.census_analyzer.csv_reader import CSVFileLoader, CSVFileReader
+from com.bridgelabz.census_analyzer.census_csv_header import IndiaCensusCSV
+from com.bridgelabz.census_analyzer.state_csv_header import StateCSVHeader
 
-CENSUS_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.csv"
-STATE_CODE_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCode.csv"
+CENSUS_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusData.csv"
+STATE_CODE_CSV_FILE_PATH = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCode.csv"
 CSV_WRONG_FILE_PATH = "CSVFile/IndiaStateCensusData.csv"
-CSV_WRONG_FILE_TYPE = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData.pdf"
-CENSUS_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusData_WrongHeader.csv"
-STATE_CODE_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCode_WrongHeader.csv"
-CENSUS_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCensusDataSpace.csv"
-STATE_CODE_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census/data/IndiaStateCodeSemicolon.csv"
+CSV_WRONG_FILE_TYPE = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusData.pdf"
+CENSUS_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusData_WrongHeader.csv"
+STATE_CODE_CSV_WRONG_HEADER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCode_WrongHeader.csv"
+CENSUS_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCensusDataSpace.csv"
+STATE_CODE_CSV_WRONG_DELIMITER = "/Users/LENOVO/PycharmProjects/census_analysis/com/bridgelabz/census_analyzer/data/IndiaStateCodeSemicolon.csv"
 
 
 @pytest.fixture
